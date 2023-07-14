@@ -1,5 +1,6 @@
 import random
 import requests
+import os
 
 
 def get_words():
@@ -29,9 +30,31 @@ def generate_passphrase(words, length):
     return passPhrase
 
 
+def save_words(words):
+    """Saves the list of words to a file."""
+    filename = "words.txt"
+    with open(filename, "w") as f:
+        for word in words:
+            f.write(word + "\n")
+
+
+def load_words():
+    """Loads the list of words from a file."""
+    filename = "words.txt"
+    words = []
+    if os.path.exists(filename):
+        with open(filename, "r") as f:
+            for word in f:
+                words.append(word.strip())
+    return words
+
+
 def main():
     """The main function."""
-    words = get_words()
+    words = load_words()
+    if not words:
+        words = get_words()
+        save_words(words)
     passphrase = generate_passphrase(words, 6)
     print(passphrase)
 
