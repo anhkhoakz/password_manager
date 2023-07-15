@@ -1,6 +1,7 @@
 import secrets
 import requests
 import os
+import pyperclip
 
 
 def get_words():
@@ -57,6 +58,7 @@ def main():
         save_words(words)
     passphrase = generate_passphrase(words, 6)
     print(passphrase)
+    pyperclip.copy(passphrase)
 
 
 if __name__ == "__main__":
