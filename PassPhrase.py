@@ -58,7 +58,7 @@ def main():
         save_words(words)
     passphrase = generate_passphrase(words, 6)
     print(passphrase)
-    pyperclip.copy(passphrase)
+    pyperclip.copy(str(passphrase))
 
 
 if __name__ == "__main__":
