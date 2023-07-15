@@ -1,4 +1,4 @@
-import random
+import secrets
 import requests
 import os
 
@@ -25,7 +25,7 @@ def generate_passphrase(words, length):
     """Generates a passphrase of the specified length."""
     passPhrase = []
     for _ in range(length):
-        randomWord = random.choice(words)
+        randomWord = secrets.choice(words)
         passPhrase.append(randomWord)
     return passPhrase
 
