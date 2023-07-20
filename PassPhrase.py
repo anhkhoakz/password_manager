@@ -56,9 +56,12 @@ def main():
     if not words:
         words = get_words()
         save_words(words)
+
     passphrase = generate_passphrase(words, 6)
-    print(passphrase)
-    pyperclip.copy(str(passphrase))
+    formatted_passphrase = " - ".join(passphrase)
+
+    print(formatted_passphrase)
+    pyperclip.copy(formatted_passphrase)
 
 
 if __name__ == "__main__":
